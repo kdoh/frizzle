@@ -1,3 +1,6 @@
+# frizzle
+a simple nextbus api in javascript 
+
 ## es6 note
 right now this just works for es6 syntax so its kinda useless,
 the intent is to use [babel](https://github.com/babel/babel) to transpile this and get to a es5 compatible module and in-browser version real soon. this was my first try at es6 so thats why its in that syntax
