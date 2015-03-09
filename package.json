@@ -1,0 +1,17 @@
+{
+  "name": "frizzle",
+  "version": "0.0.1",
+  "description": "a nextbus client for javascript.",
+  "main": "dist/frizzle.js",
+  "author": "Kyle Doherty",
+  "license": "MIT",
+  "dependencies": {
+    "extend": "^2.0.0",
+    "superagent": "^0.21.0",
+    "when": "^3.7.2",
+    "xml2js": "^0.4.5"
+  },
+  "devDependencies": {
+    "babel": "^4.7.3"
+  }
+}
