@@ -8,6 +8,13 @@
   "scripts": {
       "build": "babel src --out-file './frizzle.js'"
   },
+  "repository": {
+      "type": "git",
+      "url": "git://github.com/kdoh/frizzle.git"
+  },
+  "bugs": {
+      "url": "https://github.com/kdoh/frizzle/issues"
+  },
   "dependencies": {
     "extend": "^2.0.0",
     "superagent": "^0.21.0",
