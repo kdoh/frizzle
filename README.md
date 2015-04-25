@@ -1,23 +1,18 @@
 # frizzle
-a simple nextbus api in javascript 
-
-## es6 note
-right now this just works for es6 syntax so its kinda useless,
-the intent is to use [babel](https://github.com/babel/babel) to transpile this and get to a es5 compatible module and in-browser version real soon. this was my first try at es6 so thats why its in that syntax
+a simple nextbus api in javascript
 
 ## is this name dumb?
 you guys get this is a magic schoolbus reference right? right?
 
-## install (from git, cause its not on npm quite yet)
+## install
 
 ```sh
-$ npm install --save git://github.com/kdoh/frizzle
+$ npm install frizzle
 ```
 
 ## import and basic instantiation
-this is pretty primitive right now and would only really work in an es6 env, but it handles all the major functions
-  for interfacting wtih nextbus
-  
+this is pretty primitive right now and would only really work in an es6 env, but it handles all the major functions for interfacing with nextbus
+
 ```js
 import frizzle from 'frizzle'
 
@@ -50,8 +45,8 @@ frizzle.routeList.done(handleNextBusResponse)
   get all information about a route.
   optional param r: stands for the tag of the route if it
   wasn't part of the creation
-  
-  here we're getting information about the 'F-Market and Wharves' 
+
+  here we're getting information about the 'F-Market and Wharves'
   line in San Francisco
 */
 frizzle.routeConfig({
@@ -63,7 +58,7 @@ frizzle.routeConfig({
   (s: <string> of stop id)
   on a given route...
   (r: <string> of agency route) if you didn't already specify it
-  
+
   here, we get all info for 'The Embarcadero & Bay' St station towards
   'Castro Station via Downtown' on the 'F-Market and Wharves' line
 */
