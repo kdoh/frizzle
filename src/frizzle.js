@@ -4,49 +4,50 @@ import request from 'superagent';
 import when from 'when';
 import xml2js from 'xml2js';
 
+const ENDPOINT = 'http://webservices.nextbus.com/service/publicXMLFeed';
+
 class Frizzle {
-    constructor(options) {
-        this.endpoint = 'http://webservices.nextbus.com/service/publicXMLFeed';
-        this.agency = options.agency || 'sf-muni';
-        this.commands = [
-            'agencyList',
-            'routeList',
-            'routeConfig',
-            'predictions'
-        ];
-        this.commands.map(command =>
-            this[command] = function (params) {
-                const commandConstants = {
-                  command: command,
-                  a: this.agency
-                };
-                let requestParams = params || {};
-                return this.request(Object.assign(requestParams, commandConstants));
-            }
-        );
+    constructor(agency = 'sf-muni') {
+        this.agency = agency;
     }
 
-    request(params) {
+    agencyList(params) {
+      return this.request('agencyList', params);
+    }
+
+    routeList(params) {
+      return this.request('routeList', params);
+    }
+
+    routeConfig(params) {
+      return this.request('routeConfig', params);
+    }
+
+    predictions(params) {
+      return this.request('predictions', params);
+    }
+
+    request(command, params = {}) {
         return when.promise((resolve, reject) => {
             request
-                .get(this.endpoint)
+                .get(ENDPOINT)
                 .set('Content-type', 'text/plain')
-                .query(params)
+                .query(Object.assign({ command, a: this.agency }, params))
                 .end((error, result) => {
-                    if(error) {
+                    if (error) {
                         reject(new Error(error));
                     } else {
-                        let parser = new xml2js.Parser();
+                        const parser = new xml2js.Parser();
                         parser.parseString(result.text, (error, result) => {
-                            if(error) {
+                            if (error) {
                                 reject(new Error(error));
                             } else {
                                 resolve(result);
                             }
-                        })
+                        });
                     }
                 });
-        })
+        });
     }
 }
 

@@ -6,7 +6,8 @@
   "author": "Kyle Doherty",
   "license": "MIT",
   "scripts": {
-      "build": "babel src --out-file './frizzle.js'"
+      "build": "babel src --out-file './frizzle.js'",
+      "test": "babel-node test.js"
   },
   "repository": {
       "type": "git",
@@ -16,7 +17,6 @@
       "url": "https://github.com/kdoh/frizzle/issues"
   },
   "dependencies": {
-    "extend": "^2.0.0",
     "superagent": "^0.21.0",
     "when": "^3.7.2",
     "xml2js": "^0.4.5"
