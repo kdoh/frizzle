@@ -11,20 +11,30 @@ class Frizzle {
         this.agency = agency;
     }
 
-    agencyList(params) {
-      return this.request('agencyList', params);
+    setAgency(agency) {
+      this.agency = agency;
     }
 
-    routeList(params) {
-      return this.request('routeList', params);
+    agencies() {
+      return this.request('agencyList');
     }
 
-    routeConfig(params) {
-      return this.request('routeConfig', params);
+    routes() {
+      return this.request('routeList');
+    }
+
+    route(routeTag) {
+      if (!routeTag) {
+        return false;
+      }
+      return this.request('routeConfig', { r: routeTag });
     }
 
     predictions(params) {
-      return this.request('predictions', params);
+      if (!params || !params.route || !params.stop) {
+        return false;
+      }
+      return this.request('predictions', { r: params.route, s: params.stop });
     }
 
     request(command, params = {}) {

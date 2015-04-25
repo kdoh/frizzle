@@ -6,10 +6,10 @@ function handleResponse(data) {
 
 const f = new Frizzle();
 
-f.predictions({ s: 4502, r: 'F' }).done(handleResponse);
+f.agencies().done(handleResponse);
 
-f.agencyList().done(handleResponse);
+f.routes().done(handleResponse);
 
-f.routeList().done(handleResponse);
+f.route('F').done(handleResponse);
 
-f.routeConfig({ r: 'F' }).done(handleResponse);
+f.predictions({ stop: 4502, route: 'F' }).done(handleResponse);
