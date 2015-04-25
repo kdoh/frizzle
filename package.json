@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "build": "babel src --out-file './frizzle.js'",
-    "test": "babel-node test.js"
+    "test": "./node_modules/jest-cli/bin/jest.js"
   },
   "repository": {
     "type": "git",
@@ -25,5 +25,10 @@
     "babel": "^4.7.3",
     "babel-jest": "^5.0.1",
     "jest-cli": "^0.4.0"
+  },
+  "jest": {
+    "scriptPreprocessor": "./node_modules/babel-jest",
+    "testFileExtensions": ["es6", "js"],
+    "moduleFileExtensions": ["js", "json", "es6"]
   }
 }
