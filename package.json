@@ -6,15 +6,15 @@
   "author": "Kyle Doherty",
   "license": "MIT",
   "scripts": {
-      "build": "babel src --out-file './frizzle.js'",
-      "test": "babel-node test.js"
+    "build": "babel src --out-file './frizzle.js'",
+    "test": "babel-node test.js"
   },
   "repository": {
-      "type": "git",
-      "url": "git://github.com/kdoh/frizzle.git"
+    "type": "git",
+    "url": "git://github.com/kdoh/frizzle.git"
   },
   "bugs": {
-      "url": "https://github.com/kdoh/frizzle/issues"
+    "url": "https://github.com/kdoh/frizzle/issues"
   },
   "dependencies": {
     "superagent": "^0.21.0",
@@ -22,6 +22,8 @@
     "xml2js": "^0.4.5"
   },
   "devDependencies": {
-    "babel": "^4.7.3"
+    "babel": "^4.7.3",
+    "babel-jest": "^5.0.1",
+    "jest-cli": "^0.4.0"
   }
 }
