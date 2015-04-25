@@ -12,28 +12,38 @@ var when = _interopRequire(require("when"));
 
 var xml2js = _interopRequire(require("xml2js"));
 
+var ENDPOINT = "http://webservices.nextbus.com/service/publicXMLFeed";
+
 var Frizzle = (function () {
-    function Frizzle(options) {
-        var _this = this;
+    function Frizzle() {
+        var agency = arguments[0] === undefined ? "sf-muni" : arguments[0];
 
         _classCallCheck(this, Frizzle);
 
-        this.endpoint = "http://webservices.nextbus.com/service/publicXMLFeed";
-        this.agency = options.agency || "sf-muni";
-        this.commands = ["agencyList", "routeList", "routeConfig", "predictions"];
-        this.commands.map(function (command) {
-            return _this[command] = function (params) {
-                var commandConstants = {
-                    command: command,
-                    a: this.agency
-                };
-                var requestParams = params || {};
-                return this.request(Object.assign(requestParams, commandConstants));
-            };
-        });
+        this.agency = agency;
     }
 
     _createClass(Frizzle, {
+        agencyList: {
+            value: function agencyList(params) {
+                return this.request("agencyList", params);
+            }
+        },
+        routeList: {
+            value: function routeList(params) {
+                return this.request("routeList", params);
+            }
+        },
+        routeConfig: {
+            value: function routeConfig(params) {
+                return this.request("routeConfig", params);
+            }
+        },
+        predictions: {
+            value: function predictions(params) {
+                return this.request("predictions", params);
+            }
+        },
         request: {
             value: (function (_request) {
                 var _requestWrapper = function request(_x) {
@@ -45,11 +55,13 @@ var Frizzle = (function () {
                 };
 
                 return _requestWrapper;
-            })(function (params) {
+            })(function (command) {
                 var _this = this;
 
+                var params = arguments[1] === undefined ? {} : arguments[1];
+
                 return when.promise(function (resolve, reject) {
-                    request.get(_this.endpoint).set("Content-type", "text/plain").query(params).end(function (error, result) {
+                    request.get(ENDPOINT).set("Content-type", "text/plain").query(Object.assign({ command: command, a: _this.agency }, params)).end(function (error, result) {
                         if (error) {
                             reject(new Error(error));
                         } else {
