@@ -10,8 +10,6 @@ var request = _interopRequire(require("superagent"));
 
 var when = _interopRequire(require("when"));
 
-var extend = _interopRequire(require("extend"));
-
 var xml2js = _interopRequire(require("xml2js"));
 
 var Frizzle = (function () {
@@ -25,8 +23,12 @@ var Frizzle = (function () {
         this.commands = ["agencyList", "routeList", "routeConfig", "predictions"];
         this.commands.map(function (command) {
             return _this[command] = function (params) {
+                var commandConstants = {
+                    command: command,
+                    a: this.agency
+                };
                 var requestParams = params || {};
-                return this.request(extend(requestParams, { command: command, a: this.agency }));
+                return this.request(Object.assign(requestParams, commandConstants));
             };
         });
     }
