@@ -1,7 +1,6 @@
 'use strict';
 
 import request from 'superagent';
-import when from 'when';
 import xml2js from 'xml2js';
 
 const ENDPOINT = 'http://webservices.nextbus.com/service/publicXMLFeed';
@@ -38,7 +37,7 @@ class Frizzle {
     }
 
     request(command, params = {}) {
-        return when.promise((resolve, reject) => {
+        return new Promise((resolve, reject) => {
             request
                 .get(ENDPOINT)
                 .set('Content-type', 'text/plain')
