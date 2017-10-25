@@ -17,10 +17,10 @@
       "url": "https://github.com/kdoh/frizzle/issues"
   },
   "dependencies": {
-    "superagent": "^0.21.0",
+    "superagent": "^3.7.0",
     "xml2js": "^0.4.5"
   },
   "devDependencies": {
-    "babel": "^4.7.3"
+    "babel": "^6.23.0"
   }
 }
