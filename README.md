@@ -1,4 +1,6 @@
 # frizzle
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/kdoh/frizzle.svg)](https://greenkeeper.io/)
 a simple nextbus api in javascript
 
 ## is this name dumb?
